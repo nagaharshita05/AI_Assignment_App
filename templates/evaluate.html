@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Evaluate Assignment</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f9fc;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 50px;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            width: 400px;
+            margin-bottom: 30px;
+        }
+
+        textarea {
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 20px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        input[type="submit"] {
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 6px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+
+        .result {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            width: 400px;
+            box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        a {
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Evaluate Assignment</h1>
+    <form method="post" action="/evaluate">
+        <textarea name="answer" placeholder="Paste student's answer here" required></textarea>
+        <input type="submit" value="Evaluate">
+    </form>
+
+    {% if result %}
+    <div class="result">
+        <h3>Evaluation:</h3>
+        <p><strong>Feedback:</strong> {{ result.feedback }}</p>
+        <p><strong>Score:</strong> {{ result.score }}/5</p>
+        <p><strong>AI Generated:</strong> {{ result.ai_generated }}</p>
+    </div>
+    {% endif %}
+
+    <a href="/">Back to Home</a>
+</body>
+</html>
